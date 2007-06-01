@@ -101,25 +101,26 @@ __END__
 
 =head1 NAME
 
-SmokeRunner::Multi::Runner::TAPModel - Runner subclass which uses prove
+SmokeRunner::Multi::Runner::Smolder - Runner subclass which uses Test::TAP::Model and produces XML
 
 =head1 SYNOPSIS
 
-  my $runner = SmokeRunner::Multi::Runner::TAPModel->new( set => $set );
+  my $runner = SmokeRunner::Multi::Runner::Smolder->new( set => $set );
 
   $runner->run_tests();
 
-  my $model = $runner->model();
+  my $output = $runner->output();
 
 =head1 DESCRIPTION
 
-This subclass runs tests using C<Test::TAP::Model>
+This subclass runs tests using C<Test::TAP::Model> and returns XML
+output suitable for Smolder.
 
 =head1 METHODS
 
 This class provides the following methods:
 
-=head2 SmokeRunner::Multi::Runner::TAPModel->new(...)
+=head2 SmokeRunner::Multi::Runner::Smolder->new(...)
 
 This method creates a new runner object. It requires one parameter:
 
@@ -134,10 +135,6 @@ A C<SmokeRunner::Multi::TestSet> object.
 =head2 $runner->run_tests()
 
 This method runs the tests.
-
-=head2 $runner->model()
-
-This returns the C<Test::TAP::Model> object used to run the tests.
 
 =head2 $runner->output()
 

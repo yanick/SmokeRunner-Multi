@@ -113,8 +113,8 @@ This method creates a new reporter object. It requires one parameter:
 A C<SmokeRunner::Multi::Runner> object. You should already have called
 C<< $runner->run_tests() >> on this object.
 
-This runner object must provide a C<model()> method, which in effect
-means it must be a C<SmokeRunner::Multi::Runner::TAPModel> object.
+This runner object must be a C<SmokeRunner::Multi::Runner::Smolder>
+object.
 
 =back
 

@@ -1,4 +1,11 @@
-0.1    2007-06-01
+0.11    2007-06-01
+
+- This release only contains doc changes. The docs referred to a
+  nonexistent Runner class, TAPModel, in a bunch of places. This was
+  the predecessor to the Smolder Runner.
+
+
+0.10    2007-06-01
 
 - Initial release
 

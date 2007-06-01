@@ -107,7 +107,7 @@ needs to be writeable by the smoke runner process.
 
 The C<SmokeRunner::Multi::Runner> subclass to use. This can be a full
 class name, or just the unique part of the subclass ("Prove" or
-"TAPModel").
+"Smolder").
 
 =head2 $config->reporter()
 
