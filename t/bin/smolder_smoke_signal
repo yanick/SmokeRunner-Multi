@@ -1,0 +1,12 @@
+#!/usr/bin/perl
+
+use strict;
+use warnings;
+
+use File::Spec;
+use YAML::Syck qw( DumpFile );
+
+
+my $log = File::Spec->catfile( File::Spec->tmpdir(), 'smolder_smoke_signal.log' );
+
+DumpFile( $log, { args => \@ARGV } );
