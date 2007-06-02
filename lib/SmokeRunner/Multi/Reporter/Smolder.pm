@@ -28,9 +28,6 @@ sub new {
     die "Runner must be a Smolder runner"
         unless $self->runner()->isa('SmokeRunner::Multi::Runner::Smolder');
 
-    die "Cannot find a smolder_smoke_signal executable in the path"
-        unless which('smolder_smoke_signal');
-
     $self->{smolder} = $smolder_config;
 
     return $self;
@@ -129,9 +126,6 @@ and "password" keys.
 
 If this config data is not present, the constructor will die.
 
-It also checks that it can find a F<smolder_smoke_signal> executable
-in your path, since this is needed to actually do the reporting.
-
 =head2 $reporter->report()
 
 This executes F<smolder_smoke_signal> to actually report the test
@@ -140,6 +134,9 @@ file for the appropriate executable arguments.
 
 The set's name will be passed to F<smolder_smoke_signal> as the value
 for "--project".
+
+This will fail if it cannot find a F<smolder_smoke_signal> executable
+in your path, since this is needed to actually do the reporting.
 
 =head1 AUTHOR
 

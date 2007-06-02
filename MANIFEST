@@ -14,12 +14,11 @@ lib/SmokeRunner/Multi/TestSet.pm
 lib/SmokeRunner/Multi/TestSet/SVN.pm
 lib/SmokeRunner/Multi/Validate.pm
 LICENSE
+Makefile.PL
 MANIFEST			This list of files
 META.yml
 README
 script/smokerunner-multi
-t/bin/smolder_smoke_signal
-t/bin/svn
 t/Config.t
 t/DBI.t
 t/lib/SmokeRunner/Multi/Reporter/Test.pm
@@ -38,5 +37,4 @@ t/set/02-b-t
 t/smokerunner-multi.t
 t/TestSet.t
 t/TestSet/SVN.t
-Makefile.PL
 SIGNATURE    Added here by Module::Build

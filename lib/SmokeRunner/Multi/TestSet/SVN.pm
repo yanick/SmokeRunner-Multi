@@ -17,9 +17,6 @@ sub _new {
 
     return unless -d File::Spec->catdir( $p{set_dir}, '.svn' );
 
-    my $svn = which('svn')
-        or die "Cannot find svn executable";
-
     return bless \%p, $class;
 }
 

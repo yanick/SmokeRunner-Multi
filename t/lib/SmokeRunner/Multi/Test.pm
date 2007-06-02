@@ -13,7 +13,8 @@ use YAML::Syck qw( DumpFile );
 use base 'Exporter';
 
 our @EXPORT
-    = qw( test_setup write_t_files write_four_sets write_smolder_config root_dir set_dir test_dir );
+    = qw( test_setup write_t_files write_four_sets
+          write_smolder_config root_dir set_dir test_dir );
 
 
 {

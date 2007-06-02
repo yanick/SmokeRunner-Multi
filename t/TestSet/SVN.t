@@ -35,6 +35,25 @@ NEW:
     isa_ok( $set, 'SmokeRunner::Multi::TestSet::SVN' );
 }
 
+{
+    no warnings 'redefine';
+    *SmokeRunner::Multi::TestSet::SVN::_run_svn =
+        sub {
+            return <<'EOF';
+Path: /home/autarch/projects/Alzabo
+URL: https://svn.urth.org/svn/Alzabo/trunk
+Repository Root: https://svn.urth.org/svn/Alzabo
+Repository UUID: bf95b558-8dda-0310-8746-fa6620130e62
+Revision: 2738
+Node Kind: directory
+Schedule: normal
+Last Changed Author: autarch
+Last Changed Rev: 2737
+Last Changed Date: 2007-03-25 15:22:46 -0500 (Sun, 25 Mar 2007)
+EOF
+        };
+}
+
 SVN_INFO:
 {
     my $set = SmokeRunner::Multi::TestSet->new( set_dir => $set_dir );

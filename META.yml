@@ -1,6 +1,6 @@
 ---
 name: SmokeRunner-Multi
-version: 0.12
+version: 0.13
 author:
   - 'Dave Rolsky, <autarch@urth.org>'
 abstract: Manage smoke tests across multiple branches/checkouts/projects
@@ -34,7 +34,7 @@ build_requires:
 provides:
   SmokeRunner::Multi:
     file: lib/SmokeRunner/Multi.pm
-    version: 0.12
+    version: 0.13
   SmokeRunner::Multi::Config:
     file: lib/SmokeRunner/Multi/Config.pm
   SmokeRunner::Multi::DBI:

@@ -1,3 +1,15 @@
+0.13    2007-06-02
+
+- Changed the tests so that none of them rely on the existence of
+  external programs. Also removed the fake executables in t/bin in
+  favor of mocking subroutines for testing.
+
+- The TestSet::SVN constructor no longer checks for an svn executable,
+  and the Reporter::Smolder constructor no longer checks for
+  smolder_smoke_signal. This check will be done when the programs are
+  needed. This simplifies testing.
+
+
 0.12    2007-06-02
 
 - Enabled recursive test files in Build.PL so that all the tests are
@@ -8,7 +20,7 @@
 
 - Fixed the Runner/Smolder.t test.
 
-- Shut up warnings from Runner/Smolder.pm when running the
+- Shut up warnings from Runner::Smolder when running the
   Runner/Smolder.t tests.
 
 
