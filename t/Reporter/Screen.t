@@ -12,6 +12,7 @@ BEGIN {
 plan tests => 4;
 
 use File::Spec;
+use File::Which qw( which );
 use SmokeRunner::Multi::Reporter::Screen;
 use SmokeRunner::Multi::Runner::Prove;
 use SmokeRunner::Multi::TestSet;
@@ -39,18 +40,23 @@ NEW:
 
 REPORT:
 {
-    my $runner = SmokeRunner::Multi::Runner::Prove->new( set => $set );
-    $runner->run_tests();
+ SKIP: {
+        skip 'These tests require that prove be in the PATH.', 3
+            unless which('prove');
 
-    my $reporter =
-        SmokeRunner::Multi::Reporter::Screen->new( runner => $runner );
+        my $runner = SmokeRunner::Multi::Runner::Prove->new( set => $set );
+        $runner->run_tests();
 
-    my $output = Test::Output::stdout_from( sub { $reporter->report() } );
+        my $reporter =
+            SmokeRunner::Multi::Reporter::Screen->new( runner => $runner );
 
-    like( $output, qr/\Q01-a....1..5/,
-          'reporter printed 01-a.t' );
-    like( $output, qr/\Q02-b..../,
-          'reporter printed 02-b.t' );
-    like( $output, qr{\QFailed 1/2 test scripts},
-          'reporter printed summary output' );
+        my $output = Test::Output::stdout_from( sub { $reporter->report() } );
+
+        like( $output, qr/\Q01-a....1..5/,
+              'reporter printed 01-a.t' );
+        like( $output, qr/\Q02-b..../,
+              'reporter printed 02-b.t' );
+        like( $output, qr{\QFailed 1/2 test scripts},
+              'reporter printed summary output' );
+    }
 }

@@ -1,3 +1,17 @@
+0.12    2007-06-02
+
+- Enabled recursive test files in Build.PL so that all the tests are
+  run.
+
+- Many of the tests failed when prove was not in your path during the
+  test runs. Thanks to David Cantrell for the test report.
+
+- Fixed the Runner/Smolder.t test.
+
+- Shut up warnings from Runner/Smolder.pm when running the
+  Runner/Smolder.t tests.
+
+
 0.11    2007-06-01
 
 - This release only contains doc changes. The docs referred to a

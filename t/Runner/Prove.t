@@ -5,6 +5,7 @@ use Test::More tests => 4;
 
 use File::Basename qw( basename );
 use File::Spec;
+use File::Which qw( which );
 use SmokeRunner::Multi::Runner::Prove;
 use SmokeRunner::Multi::TestSet;
 
@@ -25,13 +26,18 @@ NEW:
 
 RUN_TESTS:
 {
-    my $runner = SmokeRunner::Multi::Runner::Prove->new( set => $set );
+ SKIP: {
+        skip 'These tests require that prove be in the PATH.', 3
+            unless which('prove');
 
-    $runner->run_tests();
-    like( $runner->output(), qr/\Q01-a....1..5/,
-          'runner ran 01-a.t' );
-    like( $runner->output(), qr/\Q02-b..../,
-          'runner ran 02-b.t' );
-    like( $runner->output(), qr{\QFailed 1/2 test scripts},
-          'runner captured summary output' );
+        my $runner = SmokeRunner::Multi::Runner::Prove->new( set => $set );
+
+        $runner->run_tests();
+        like( $runner->output(), qr/\Q01-a....1..5/,
+              'runner ran 01-a.t' );
+        like( $runner->output(), qr/\Q02-b..../,
+              'runner ran 02-b.t' );
+        like( $runner->output(), qr{\QFailed 1/2 test scripts},
+              'runner captured summary output' );
+    }
 }

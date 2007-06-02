@@ -7,7 +7,6 @@ use base 'SmokeRunner::Multi::Runner';
 __PACKAGE__->mk_ro_accessors( 'output' );
 
 use File::chdir;
-use File::Which;
 use SmokeRunner::Multi::SafeRun qw( safe_run );
 use SmokeRunner::Multi::Validate qw( validate ARRAYREF_TYPE );
 use Test::TAP::Model;

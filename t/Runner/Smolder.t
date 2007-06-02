@@ -43,7 +43,7 @@ XML:
     my $runner = SmokeRunner::Multi::Runner::Smolder->new( set => $set );
 
     $runner->run_tests();
-    my $xml = $runner->xml();
+    my $xml = $runner->output();
 
     my $results = XMLin($xml);
 

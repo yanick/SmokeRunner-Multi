@@ -33,11 +33,12 @@ my $builder = Module::Build->new(
     build_requires => {
         'Test::More' => 0,
     },
-    script_files       => ['script/smokerunner-multi'],
-    create_readme      => 1,
-    license            => 'perl',
-    create_makefile_pl => 'traditional',
-    sign               => 1,
+    script_files         => ['script/smokerunner-multi'],
+    recursive_test_files => 1,
+    create_readme        => 1,
+    license              => 'perl',
+    create_makefile_pl   => 'traditional',
+    sign                 => 1,
 );
 
 $builder->create_build_script();

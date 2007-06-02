@@ -13,6 +13,8 @@ BEGIN
 
 plan tests => 9;
 
+use File::Which qw( which );
+
 use lib 't/lib';
 use SmokeRunner::Multi::Test;
 
@@ -47,11 +49,16 @@ LIST:
 
 LIST:
 {
-    my $cmd = Test::Command->new( cmd => [ $script, 'run' ] );
-    exit_is_num( $cmd, 0,
-                 'run command exits with 0' );
-    stdout_is_eq( $cmd, '',
-                 'run stdout output is empty' );
-    stderr_is_eq( $cmd, '',
-                  'run stderr output is empty' );
+ SKIP: {
+        skip 'These tests require that prove be in the PATH.', 3
+            unless which('prove');
+
+        my $cmd = Test::Command->new( cmd => [ $script, 'run' ] );
+        exit_is_num( $cmd, 0,
+                     'run command exits with 0' );
+        stdout_is_eq( $cmd, '',
+                      'run stdout output is empty' );
+        stderr_is_eq( $cmd, '',
+                      'run stderr output is empty' );
+    }
 }

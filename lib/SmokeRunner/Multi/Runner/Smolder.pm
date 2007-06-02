@@ -57,10 +57,11 @@ sub run_tests {
 
 {
     my %OUT_options = (
-        RootName => 'test_run',
-        XMLDecl  => 1,
-        KeyAttr  => [],
-        NoAttr   => 1,
+        RootName      => 'test_run',
+        XMLDecl       => 1,
+        KeyAttr       => [],
+        NoAttr        => 1,
+        SuppressEmpty => undef,
     );
 
     # This is a reimplementation of Test::TAP::XML that's been tweaked

@@ -3,6 +3,7 @@ use warnings;
 
 use Test::More tests => 13;
 
+use File::Which qw( which );
 use SmokeRunner::Multi;
 
 use lib 't/lib';
@@ -71,21 +72,26 @@ MAKE_THINGS:
 
 RUN_AND_REPORT_NEXT_SET:
 {
-    my $smoker = SmokeRunner::Multi->new();
-    my $next_set = $smoker->next_set();
+ SKIP: {
+        skip 'These tests require that prove be in the PATH.', 3
+            unless which('prove');
 
-    my $last_run_time = $next_set->last_run_time();
-    $next_set->prioritize();
+        my $smoker = SmokeRunner::Multi->new();
+        my $next_set = $smoker->next_set();
 
-    my $reporter = $smoker->run_and_report_next_set();
+        my $last_run_time = $next_set->last_run_time();
+        $next_set->prioritize();
 
-    like( $reporter->output(), qr/01-a/,
-          'reporter has some output' );
+        my $reporter = $smoker->run_and_report_next_set();
 
-    my $set = SmokeRunner::Multi::TestSet->new( set_dir => $next_set->set_dir() );
+        like( $reporter->output(), qr/01-a/,
+              'reporter has some output' );
 
-    ok( ! $set->is_prioritized(),
-        'set is no longer prioritized and calling run_and_report_next_set()' );
-    cmp_ok( $set->last_run_time(), '>', $last_run_time,
-            'last run time for set was updated' );
+        my $set = SmokeRunner::Multi::TestSet->new( set_dir => $next_set->set_dir() );
+
+        ok( ! $set->is_prioritized(),
+            'set is no longer prioritized and calling run_and_report_next_set()' );
+        cmp_ok( $set->last_run_time(), '>', $last_run_time,
+                'last run time for set was updated' );
+    }
 }
