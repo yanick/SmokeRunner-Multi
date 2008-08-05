@@ -9,7 +9,6 @@ __PACKAGE__->mk_ro_accessors( 'output' );
 use File::chdir;
 use SmokeRunner::Multi::SafeRun qw( safe_run );
 use SmokeRunner::Multi::Validate qw( validate ARRAYREF_TYPE );
-use Test::TAP::Model;
 use YAML::Syck qw( Dump );
 
 
@@ -20,7 +19,7 @@ sub run_tests {
 
     safe_run(
         command       => 'prove',
-        args          => [ '-l', '-v', $self->set()->test_files() ],
+        args          => [ '-b', '-l', '-v', $self->set()->test_files() ],
         stdout_buffer => \$self->{output},
         stderr_buffer => \$self->{output},
     );

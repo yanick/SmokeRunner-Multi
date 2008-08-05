@@ -1,3 +1,9 @@
+0.14    2008-08-05
+
+- Test fixes to work with the latest Test::Harness. Now requires
+  Test::Harness 3.0+. Failure reported by Zrusilla. RT #38152.
+
+
 0.13    2007-06-02
 
 - Changed the tests so that none of them rely on the existence of

@@ -8,6 +8,7 @@ use base 'Exporter';
 our @EXPORT_OK = 'safe_run';
 
 use Cwd qw( abs_path );
+use File::Spec;
 use File::Which qw( which );
 use SmokeRunner::Multi::Validate
     qw( validate SCALAR_TYPE ARRAYREF_TYPE SCALARREF_TYPE );
@@ -24,10 +25,19 @@ use IPC::Run3 qw( run3 );
     sub safe_run {
         my %p = validate( @_, $spec );
 
-        my $cmd = which( $p{command} )
-            or die "Cannot find $p{command} in path";
+        my $cmd;
+        if ( File::Spec->file_name_is_absolute( $p{command} ) ) {
+            $cmd = $p{command};
 
-        $cmd = abs_path($cmd);
+            die "$cmd is not executable"
+                unless -x $cmd;
+        }
+        else {
+            $cmd = which( $p{command} )
+                or die "Cannot find $p{command} in path";
+
+            $cmd = abs_path($cmd);
+        }
 
         # This is a simple way to make the path taint-safe.
         local $ENV{PATH} = '';

@@ -22,9 +22,8 @@ WriteMakefile
                            'IPC::Run3' => '0',
                            'List::Util' => '0',
                            'Params::Validate' => '0',
-                           'Test::Harness' => '2.32',
+                           'Test::Harness' => '3',
                            'Test::More' => '0',
-                           'Test::TAP::Model' => '0.09',
                            'YAML::Syck' => '0'
                          },
           'INSTALLDIRS' => 'site',

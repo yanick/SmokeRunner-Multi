@@ -33,11 +33,11 @@ RUN_TESTS:
         my $runner = SmokeRunner::Multi::Runner::Prove->new( set => $set );
 
         $runner->run_tests();
-        like( $runner->output(), qr/\Q01-a....1..5/,
+        like( $runner->output(), qr/\Q01-a..../,
               'runner ran 01-a.t' );
         like( $runner->output(), qr/\Q02-b..../,
               'runner ran 02-b.t' );
-        like( $runner->output(), qr{\QFailed 1/2 test scripts},
+        like( $runner->output(), qr{\QTest Summary Report},
               'runner captured summary output' );
     }
 }

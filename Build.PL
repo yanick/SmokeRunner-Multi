@@ -24,9 +24,7 @@ my $builder = Module::Build->new(
         'IPC::Run3'                  => 0,
         'List::Util'                 => 0,
         'Params::Validate'           => 0,
-        # first version with prove
-        'Test::Harness'              => 2.32,
-        'Test::TAP::Model'           => 0.09,
+        'Test::Harness'              => 3.0,
         'YAML::Syck'                 => 0,
         'perl'                       => 5.008,
     },

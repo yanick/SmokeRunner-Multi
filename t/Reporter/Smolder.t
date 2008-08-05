@@ -5,7 +5,7 @@ use Test::More tests => 8;
 
 use File::Spec;
 use SmokeRunner::Multi::Reporter::Smolder;
-use SmokeRunner::Multi::Runner::Smolder;
+use SmokeRunner::Multi::Runner::TAPArchive;
 use SmokeRunner::Multi::TestSet;
 
 use lib 't/lib';
@@ -34,10 +34,10 @@ NEW:
     $reporter = eval {
         SmokeRunner::Multi::Reporter::Smolder->new( runner => $runner );
     };
-    like( $@, qr/\QRunner must be a Smolder runner/,
+    like( $@, qr/\QRunner must be a TAPArchive runner/,
           'cannot create a new Smolder reporter with a base runner' );
 
-    $runner = SmokeRunner::Multi::Runner::Smolder->new( set => $set );
+    $runner = SmokeRunner::Multi::Runner::TAPArchive->new( set => $set );
     $runner->run_tests();
 
     $reporter = eval {
@@ -48,7 +48,7 @@ NEW:
 
 REPORT:
 {
-    my $runner = SmokeRunner::Multi::Runner::Smolder->new( set => $set );
+    my $runner = SmokeRunner::Multi::Runner::TAPArchive->new( set => $set );
     $runner->run_tests();
 
     my $reporter =

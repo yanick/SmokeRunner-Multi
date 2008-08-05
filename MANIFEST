@@ -1,3 +1,4 @@
+.shipit
 Build.PL
 Changes
 lib/SmokeRunner/Multi.pm
@@ -8,7 +9,7 @@ lib/SmokeRunner/Multi/Reporter/Screen.pm
 lib/SmokeRunner/Multi/Reporter/Smolder.pm
 lib/SmokeRunner/Multi/Runner.pm
 lib/SmokeRunner/Multi/Runner/Prove.pm
-lib/SmokeRunner/Multi/Runner/Smolder.pm
+lib/SmokeRunner/Multi/Runner/TAPArchive.pm
 lib/SmokeRunner/Multi/SafeRun.pm
 lib/SmokeRunner/Multi/TestSet.pm
 lib/SmokeRunner/Multi/TestSet/SVN.pm
@@ -31,7 +32,7 @@ t/Reporter/Screen.t
 t/Reporter/Smolder.t
 t/Runner.t
 t/Runner/Prove.t
-t/Runner/Smolder.t
+t/Runner/TAPArchive.t
 t/set/01-a-t
 t/set/02-b-t
 t/smokerunner-multi.t

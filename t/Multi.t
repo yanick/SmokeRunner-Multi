@@ -44,16 +44,16 @@ _CLASS_FOR:
     like( $@, qr/\QCan't locate/,
           'cannot call _class_for with invalid class name' );
 
-    is( $smoker->_class_for( 'Runner', 'Smolder' ),
-        'SmokeRunner::Multi::Runner::Smolder',
+    is( $smoker->_class_for( 'Runner', 'TAPArchive' ),
+        'SmokeRunner::Multi::Runner::TAPArchive',
         '_class_for() returns full class name' );
 
-    is( $smoker->_class_for( 'Runner', 'Smolder' ),
-        'SmokeRunner::Multi::Runner::Smolder',
+    is( $smoker->_class_for( 'Runner', 'TAPArchive' ),
+        'SmokeRunner::Multi::Runner::TAPArchive',
         '_class_for() returns full class name on second call' );
 
-    is( $smoker->_class_for( 'Runner', 'SmokeRunner::Multi::Runner::Smolder' ),
-        'SmokeRunner::Multi::Runner::Smolder',
+    is( $smoker->_class_for( 'Runner', 'SmokeRunner::Multi::Runner::TAPArchive' ),
+        'SmokeRunner::Multi::Runner::TAPArchive',
         '_class_for() returns full class name when given full class name' );
 }
 

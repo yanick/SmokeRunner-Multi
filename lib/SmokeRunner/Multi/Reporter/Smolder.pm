@@ -25,8 +25,8 @@ sub new {
             unless $smolder_config->{$k};
     }
 
-    die "Runner must be a Smolder runner"
-        unless $self->runner()->isa('SmokeRunner::Multi::Runner::Smolder');
+    die "Runner must be a TAPArchive runner"
+        unless $self->runner()->isa('SmokeRunner::Multi::Runner::TAPArchive');
 
     $self->{smolder} = $smolder_config;
 
@@ -44,34 +44,19 @@ sub report {
 
     push @params, '--project', $self->runner()->set()->name();
 
-    push @params, '--file', $self->_xml_file();
+    my $file = $self->runner()->tap_archive_file();
+    push @params, '--file', $file;
 
     my $stderr_buffer;
+    my $stdout_buffer;
     safe_run(
         command       => 'smolder_smoke_signal',
         args          => \@params,
-        stdout_buffer => \undef,
+        stdout_buffer => \$stdout_buffer,
         stderr_buffer => \$stderr_buffer,
     );
     die "Error running smolder_smoke_signal:\n$stderr_buffer\n"
         if defined $stderr_buffer && length $stderr_buffer;
-}
-
-sub _xml_file {
-    my $self   = shift;
-    my $runner = shift;
-
-    my $dir = tempdir( CLEANUP => 1 );
-    my $file = File::Spec->catfile( $dir, $self->runner()->set()->name() . '.xml' );;
-
-    open my $fh, '>', $file
-        or die "Cannot write to $file: $!";
-    print $fh $self->runner()->output()
-        or die "Cannot write to $file: $!";
-    close $fh
-        or die "Cannot write to $file: $!";
-
-    return $file;
 }
 
 

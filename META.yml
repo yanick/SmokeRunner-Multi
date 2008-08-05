@@ -1,6 +1,6 @@
 ---
 name: SmokeRunner-Multi
-version: 0.13
+version: 0.14
 author:
   - 'Dave Rolsky, <autarch@urth.org>'
 abstract: Manage smoke tests across multiple branches/checkouts/projects
@@ -25,8 +25,7 @@ requires:
   IPC::Run3: 0
   List::Util: 0
   Params::Validate: 0
-  Test::Harness: 2.32
-  Test::TAP::Model: 0.09
+  Test::Harness: 3
   YAML::Syck: 0
   perl: 5.008
 build_requires:
@@ -34,7 +33,7 @@ build_requires:
 provides:
   SmokeRunner::Multi:
     file: lib/SmokeRunner/Multi.pm
-    version: 0.13
+    version: 0.14
   SmokeRunner::Multi::Config:
     file: lib/SmokeRunner/Multi/Config.pm
   SmokeRunner::Multi::DBI:
@@ -49,8 +48,8 @@ provides:
     file: lib/SmokeRunner/Multi/Runner.pm
   SmokeRunner::Multi::Runner::Prove:
     file: lib/SmokeRunner/Multi/Runner/Prove.pm
-  SmokeRunner::Multi::Runner::Smolder:
-    file: lib/SmokeRunner/Multi/Runner/Smolder.pm
+  SmokeRunner::Multi::Runner::TAPArchive:
+    file: lib/SmokeRunner/Multi/Runner/TAPArchive.pm
   SmokeRunner::Multi::SafeRun:
     file: lib/SmokeRunner/Multi/SafeRun.pm
   SmokeRunner::Multi::TestSet:
@@ -59,7 +58,7 @@ provides:
     file: lib/SmokeRunner/Multi/TestSet/SVN.pm
   SmokeRunner::Multi::Validate:
     file: lib/SmokeRunner/Multi/Validate.pm
-generated_by: Module::Build version 0.2807
+generated_by: Module::Build version 0.2808
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.2.html
   version: 1.2
