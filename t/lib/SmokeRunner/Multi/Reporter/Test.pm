@@ -7,7 +7,8 @@ use base 'SmokeRunner::Multi::Reporter';
 __PACKAGE__->mk_ro_accessors('output');
 
 
-sub report {
+sub report
+{
     my $self = shift;
 
     $self->{output} = $self->runner()->output();

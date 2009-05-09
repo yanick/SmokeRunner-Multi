@@ -11,7 +11,8 @@ use SmokeRunner::Multi::Config;
 
 {
     my $dbh;
-    sub handle {
+    sub handle
+    {
         return $dbh if $dbh;
 
         my $config = SmokeRunner::Multi::Config->instance();
@@ -38,7 +39,8 @@ CREATE TABLE TestSet (
 );
 EOF
 
-    sub _create_database {
+    sub _create_database
+    {
         my $dbh = shift;
 
         $dbh->do($ddl);

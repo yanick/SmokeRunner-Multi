@@ -13,14 +13,16 @@ use YAML::Syck qw( Dump );
 
 my @SmolderKeys = qw( server username password );
 
-sub new {
+sub new
+{
     my $class = shift;
 
     my $self = $class->SUPER::new(@_);
 
     my $smolder_config = SmokeRunner::Multi::Config->instance()->smolder();
 
-    for my $k (@SmolderKeys) {
+    for my $k (@SmolderKeys)
+    {
         die "No config item for smolder $k in config"
             unless $smolder_config->{$k};
     }
@@ -33,11 +35,13 @@ sub new {
     return $self;
 }
 
-sub report {
+sub report
+{
     my $self = shift;
 
     my @params;
-    for my $k (@SmolderKeys) {
+    for my $k (@SmolderKeys)
+    {
         push @params, '--' . $k;
         push @params, $self->{smolder}->{$k};
     }
@@ -49,12 +53,13 @@ sub report {
 
     my $stderr_buffer;
     my $stdout_buffer;
-    safe_run(
-        command       => 'smolder_smoke_signal',
-        args          => \@params,
-        stdout_buffer => \$stdout_buffer,
-        stderr_buffer => \$stderr_buffer,
-    );
+    safe_run
+        ( command       => 'smolder_smoke_signal',
+          args          => \@params,
+          stdout_buffer => \$stdout_buffer,
+          stderr_buffer => \$stderr_buffer,
+        );
+
     die "Error running smolder_smoke_signal:\n$stderr_buffer\n"
         if defined $stderr_buffer && length $stderr_buffer;
 }

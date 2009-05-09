@@ -16,23 +16,26 @@ use IPC::Run3 qw( run3 );
 
 
 {
-    my $spec = {
-        command       => SCALAR_TYPE,
-        args          => ARRAYREF_TYPE( default => [] ),
-        stdout_buffer => SCALARREF_TYPE,
-        stderr_buffer => SCALARREF_TYPE,
-    };
-    sub safe_run {
+    my $spec = { command       => SCALAR_TYPE,
+                 args          => ARRAYREF_TYPE( default => [] ),
+                 stdout_buffer => SCALARREF_TYPE,
+                 stderr_buffer => SCALARREF_TYPE,
+               };
+
+    sub safe_run
+    {
         my %p = validate( @_, $spec );
 
         my $cmd;
-        if ( File::Spec->file_name_is_absolute( $p{command} ) ) {
+        if ( File::Spec->file_name_is_absolute( $p{command} ) )
+        {
             $cmd = $p{command};
 
             die "$cmd is not executable"
                 unless -x $cmd;
         }
-        else {
+        else
+        {
             $cmd = which( $p{command} )
                 or die "Cannot find $p{command} in path";
 
@@ -41,11 +44,10 @@ use IPC::Run3 qw( run3 );
 
         # This is a simple way to make the path taint-safe.
         local $ENV{PATH} = '';
-        run3(
-            [ $cmd, @{ $p{args} } ],
-            undef,
-            $p{stdout_buffer}, $p{stderr_buffer}
-        );
+        run3( [ $cmd, @{ $p{args} } ],
+              undef,
+              $p{stdout_buffer}, $p{stderr_buffer}
+            );
     }
 }
 

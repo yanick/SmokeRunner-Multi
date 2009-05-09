@@ -12,7 +12,8 @@ use SmokeRunner::Multi::Validate qw( validate TEST_SET_TYPE );
 {
     my $spec = { set => TEST_SET_TYPE,
                };
-    sub new {
+    sub new
+    {
         my $class = shift;
         my %p     = validate( @_, $spec );
 
@@ -20,7 +21,8 @@ use SmokeRunner::Multi::Validate qw( validate TEST_SET_TYPE );
     }
 }
 
-sub run_tests {
+sub run_tests
+{
     die "The run_tests() method must be overridden in a subclass.\n"
 }
 

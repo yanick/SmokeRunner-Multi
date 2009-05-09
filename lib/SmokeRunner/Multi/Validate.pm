@@ -12,36 +12,34 @@ use Scalar::Util qw( blessed );
 my %Types;
 BEGIN
 {
-    %Types = (
-        DIR_TYPE => {
-            type      => SCALAR,
-            callbacks => {
-                'is a dir' => sub { -d $_[0] }
-            },
-        },
+    %Types =
+        (
+        DIR_TYPE => { type      => SCALAR,
+                      callbacks => { 'is a dir' => sub { -d $_[0] } },
+                    },
 
-        TEST_SET_TYPE => {
-            type => OBJECT,
-            isa  => 'SmokeRunner::Multi::TestSet',
-        },
+        TEST_SET_TYPE => { type => OBJECT,
+                           isa  => 'SmokeRunner::Multi::TestSet',
+                         },
 
-        RUNNER_TYPE => {
-            type => OBJECT,
-            isa  => 'SmokeRunner::Multi::Runner',
-        },
+        RUNNER_TYPE => { type => OBJECT,
+                         isa  => 'SmokeRunner::Multi::Runner',
+                       },
     );
 
-    for my $t ( grep {/^[A-Z]+$/} @Params::Validate::EXPORT_OK ) {
+    for my $t ( grep {/^[A-Z]+$/} @Params::Validate::EXPORT_OK )
+    {
         my $name = $t . '_TYPE';
         $Types{$name} = { type => eval $t };
     }
 
-    for my $t ( keys %Types ) {
+    for my $t ( keys %Types )
+    {
         my %t   = %{ $Types{$t} };
-        my $sub = sub {
-            die "Invalid additional args for $t: [@_]" if @_ % 2;
-            return { %t, @_ };
-        };
+
+        my $sub = sub { die "Invalid additional args for $t: [@_]" if @_ % 2;
+                        return { %t, @_ };
+                    };
 
         no strict 'refs';
         *{$t} = $sub;
@@ -55,7 +53,8 @@ my %MyExports = map { $_ => 1 }
     @EXPORT_OK,
     map { ":$_" } keys %EXPORT_TAGS;
 
-sub import {
+sub import
+{
     my $class = shift;
 
     my $caller = caller;

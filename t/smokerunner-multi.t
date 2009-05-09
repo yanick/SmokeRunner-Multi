@@ -49,7 +49,8 @@ LIST:
 
 LIST:
 {
- SKIP: {
+ SKIP:
+    {
         skip 'These tests require that prove be in the PATH.', 3
             unless which('prove');
 

@@ -50,7 +50,8 @@ TEST_FILES:
     is( scalar @tests, 0, 'no test files found' );
 
     my @expected_tests;
-    for my $num ( 1..5 ) {
+    for my $num ( 1..5 )
+    {
         my $file = File::Spec->catfile( $t_dir, "$num.t" );
         open my $fh, '>', $file
             or die "Cannot write to $file: $!";

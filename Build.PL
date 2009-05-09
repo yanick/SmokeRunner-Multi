@@ -7,6 +7,7 @@ my $builder = Module::Build->new(
     module_name => 'SmokeRunner::Multi',
     license     => 'perl',
     requires    => {
+        'Archive::Tar'               => 0,
         'Class::Accessor'            => 0,
         'Class::Factory::Util'       => 0,
         'Class::Singleton'           => 0,

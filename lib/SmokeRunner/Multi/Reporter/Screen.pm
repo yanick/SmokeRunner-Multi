@@ -5,7 +5,8 @@ use warnings;
 
 use base 'SmokeRunner::Multi::Reporter';
 
-sub report {
+sub report
+{
     my $self = shift;
 
     print "\n";

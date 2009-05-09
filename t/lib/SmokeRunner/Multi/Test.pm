@@ -24,13 +24,13 @@ our @EXPORT
     my $SetDir = File::Spec->catdir( $RootDir, 'set1' );
     my $TestDir = File::Spec->catdir( $SetDir,  't' );
 
-    my %BaseConfig = (
-        root     => $RootDir,
-        runner   => 'Prove',
-        reporter => 'Test',
+    my %BaseConfig = ( root     => $RootDir,
+                       runner   => 'Prove',
+                       reporter => 'Test',
     );
 
-    sub test_setup {
+    sub test_setup
+    {
         DumpFile( $ConfigFile, \%BaseConfig );
     }
 
@@ -39,7 +39,8 @@ our @EXPORT
     sub set_dir { return $SetDir }
     sub test_dir { return $TestDir }
 
-    sub write_t_files {
+    sub write_t_files
+    {
         my $dir = shift || $TestDir;
 
         mkpath( $dir, 0, 0755 )
@@ -47,7 +48,8 @@ our @EXPORT
 
         my $source = File::Spec->catdir( 't', 'set' );
 
-        for my $file ( qw( 01-a-t 02-b-t ) ) {
+        for my $file ( qw( 01-a-t 02-b-t ) )
+        {
             my $source = File::Spec->catfile( $source, $file );
             my $target = File::Spec->catfile( $dir, $file );
             $target =~ s/-t$/.t/;
@@ -57,7 +59,8 @@ our @EXPORT
         }
     }
 
-    sub write_four_sets {
+    sub write_four_sets
+    {
         my $t1 = File::Spec->catdir( root_dir(), 'set1', 't' );
         write_t_files($t1);
 
@@ -71,7 +74,8 @@ our @EXPORT
         write_t_files($t4);
 
         my $age = 3600;
-        for my $dir ( $t4, $t3, $t2 ) {
+        for my $dir ( $t4, $t3, $t2 )
+        {
             my $past = time - $age;
 
             utime $past, $past, File::Find::Rule->file()->in($dir);
@@ -80,13 +84,14 @@ our @EXPORT
         }
     }
 
-    my %SmolderConfig = (
-        server   => 'http://localhost/',
-        username => 'username',
-        password => 'password',
-        project  => 'testing',
-    );
-    sub write_smolder_config {
+    my %SmolderConfig = ( server   => 'http://localhost/',
+                          username => 'username',
+                          password => 'password',
+                          project  => 'testing',
+                        );
+
+    sub write_smolder_config
+    {
         DumpFile( $ConfigFile, { %BaseConfig, smolder => \%SmolderConfig } );
 
         # Hack!

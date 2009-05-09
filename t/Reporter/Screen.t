@@ -3,8 +3,10 @@ use warnings;
 
 use Test::More;
 
-BEGIN {
-    unless ( eval "use Test::Output; 1;" ) {
+BEGIN
+{
+    unless ( eval "use Test::Output; 1;" )
+    {
         plan skip_all => 'These tests require Test::Output';
     }
 }
@@ -40,7 +42,8 @@ NEW:
 
 REPORT:
 {
- SKIP: {
+ SKIP:
+    {
         skip 'These tests require that prove be in the PATH.', 3
             unless which('prove');
 
@@ -52,9 +55,9 @@ REPORT:
 
         my $output = Test::Output::stdout_from( sub { $reporter->report() } );
 
-        like( $runner->output(), qr/\Q01-a..../,
+        like( $runner->output(), qr/\Q01-a\E(?:\.t \.\.|\.\.\.\.)/,
               'reporter printed 01-a.t' );
-        like( $runner->output(), qr/\Q02-b..../,
+        like( $runner->output(), qr/\Q02-b\E(?:\.t \.\.|\.\.\.\.)/,
               'reporter printed 02-b.t' );
         like( $runner->output(), qr{\QTest Summary Report},
               'reporter printed summary output' );

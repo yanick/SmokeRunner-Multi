@@ -1,3 +1,10 @@
+0.15    2008-09-09
+
+- More test fixes to work with even newer versions of prove.
+
+- Only run pod tests when making distro, not when installing.
+
+
 0.14    2008-08-05
 
 - Test fixes to work with the latest Test::Harness. Now requires

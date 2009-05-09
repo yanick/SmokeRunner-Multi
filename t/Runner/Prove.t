@@ -26,16 +26,17 @@ NEW:
 
 RUN_TESTS:
 {
- SKIP: {
+ SKIP:
+    {
         skip 'These tests require that prove be in the PATH.', 3
             unless which('prove');
 
         my $runner = SmokeRunner::Multi::Runner::Prove->new( set => $set );
 
         $runner->run_tests();
-        like( $runner->output(), qr/\Q01-a..../,
+        like( $runner->output(), qr/\Q01-a\E(?:\.t \.\.|\.\.\.\.)/,
               'runner ran 01-a.t' );
-        like( $runner->output(), qr/\Q02-b..../,
+        like( $runner->output(), qr/\Q02-b\E(?:\.t \.\.|\.\.\.\.)/,
               'runner ran 02-b.t' );
         like( $runner->output(), qr{\QTest Summary Report},
               'runner captured summary output' );

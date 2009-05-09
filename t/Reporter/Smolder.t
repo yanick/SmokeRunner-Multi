@@ -24,25 +24,22 @@ $ENV{PATH} = join $path_sep, 't/bin', File::Spec->path();
 NEW:
 {
     my $runner = SmokeRunner::Multi::Runner->new( set => $set );
-    my $reporter = eval {
-        SmokeRunner::Multi::Reporter::Smolder->new( runner => $runner );
-    };
+    my $reporter =
+        eval { SmokeRunner::Multi::Reporter::Smolder->new( runner => $runner ); };
     like( $@, qr/No config item for smolder server/,
           'cannot create a new Smolder reporter without smolder config' );
 
     write_smolder_config();
-    $reporter = eval {
-        SmokeRunner::Multi::Reporter::Smolder->new( runner => $runner );
-    };
+    $reporter =
+        eval { SmokeRunner::Multi::Reporter::Smolder->new( runner => $runner ); };
     like( $@, qr/\QRunner must be a TAPArchive runner/,
           'cannot create a new Smolder reporter with a base runner' );
 
     $runner = SmokeRunner::Multi::Runner::TAPArchive->new( set => $set );
     $runner->run_tests();
 
-    $reporter = eval {
-        SmokeRunner::Multi::Reporter::Smolder->new( runner => $runner );
-    };
+    $reporter =
+        eval { SmokeRunner::Multi::Reporter::Smolder->new( runner => $runner ); };
     isa_ok( $reporter, 'SmokeRunner::Multi::Reporter::Smolder' );
 }
 
@@ -65,7 +62,8 @@ REPORT:
 
     my %args = @{ $signal->{args} };
 
-    for my $k ( qw( server username password ) ) {
+    for my $k ( qw( server username password ) )
+    {
         is( $args{"--$k"}, SmokeRunner::Multi::Config->instance()->smolder()->{$k},
             "$k passed to smolder_smoke_signal is same as $k in config" );
     }

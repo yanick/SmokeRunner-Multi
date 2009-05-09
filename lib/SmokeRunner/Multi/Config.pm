@@ -9,7 +9,8 @@ use File::Spec;
 use YAML::Syck qw( LoadFile );
 
 
-sub _new_instance {
+sub _new_instance
+{
     my $class = shift;
 
     my $file = $class->_FindConfigFile();
@@ -17,13 +18,13 @@ sub _new_instance {
     my $cfg = LoadFile($file);
 
     die "Config in $file for the smoke-runner was not valid.\n"
-        unless $cfg
-        && $cfg->{root};
+        unless $cfg && $cfg->{root};
 
     return bless $cfg, $class;
 }
 
-sub _FindConfigFile {
+sub _FindConfigFile
+{
     my $class = shift;
 
 
@@ -38,7 +39,8 @@ sub _FindConfigFile {
 
     push @files, '/etc/smokerunner/smokerunner.conf';
 
-    for my $file (@files) {
+    for my $file (@files)
+    {
         return $file if -f $file && -r _;
     }
 

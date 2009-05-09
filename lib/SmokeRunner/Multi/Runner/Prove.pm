@@ -12,17 +12,18 @@ use SmokeRunner::Multi::Validate qw( validate ARRAYREF_TYPE );
 use YAML::Syck qw( Dump );
 
 
-sub run_tests {
+sub run_tests
+{
     my $self = shift;
 
     local $CWD = $self->set()->set_dir();
 
-    safe_run(
-        command       => 'prove',
-        args          => [ '-b', '-l', '-v', $self->set()->test_files() ],
-        stdout_buffer => \$self->{output},
-        stderr_buffer => \$self->{output},
-    );
+    safe_run
+        ( command       => 'prove',
+          args          => [ '-b', '-l', '-v', $self->set()->test_files() ],
+          stdout_buffer => \$self->{output},
+          stderr_buffer => \$self->{output},
+        );
 }
 
 

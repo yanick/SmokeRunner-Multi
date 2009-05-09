@@ -16,15 +16,18 @@ use SmokeRunner::Multi::DBI;
 use SmokeRunner::Multi::Validate qw( validate DIR_TYPE );
 
 
-BEGIN {
-    for my $subclass ( map { __PACKAGE__ . '::' . $_ } __PACKAGE__->subclasses() ) {
+BEGIN
+{
+    for my $subclass ( map { __PACKAGE__ . '::' . $_ } __PACKAGE__->subclasses() )
+    {
         eval "require $subclass" or die $@;
     }
 }
 
 {
     my $spec = { set_dir => DIR_TYPE };
-    sub new {
+    sub new
+    {
         my $class = shift;
         my %p     = validate( @_, $spec );
 
@@ -32,15 +35,15 @@ BEGIN {
         die "A test set's directory must have a 't' subdirectory"
             unless -d $test_dir;
 
-        my %subclass_p = (
-            %p,
-            name     => basename( $p{set_dir} ),
-            test_dir => $test_dir,
-            dbh      => SmokeRunner::Multi::DBI::handle(),
-        );
+        my %subclass_p = ( %p,
+                           name     => basename( $p{set_dir} ),
+                           test_dir => $test_dir,
+                           dbh      => SmokeRunner::Multi::DBI::handle(),
+                         );
 
         my $self;
-        for my $subclass ( map { __PACKAGE__ . '::' . $_ } $class->subclasses() ) {
+        for my $subclass ( map { __PACKAGE__ . '::' . $_ } $class->subclasses() )
+        {
             $self = $subclass->_new(%subclass_p);
         }
 
@@ -53,13 +56,15 @@ BEGIN {
     }
 }
 
-sub _new {
+sub _new
+{
     my $class = shift;
 
     return bless { @_ }, $class;
 }
 
-sub _instantiate_in_db {
+sub _instantiate_in_db
+{
     my $self = shift;
 
     my $insert_sql = 'INSERT OR IGNORE INTO TestSet (name) VALUES (?)';
@@ -67,7 +72,8 @@ sub _instantiate_in_db {
     $self->{dbh}->do( $insert_sql, {}, $self->name() );
 }
 
-sub _get_db_data {
+sub _get_db_data
+{
     my $self = shift;
 
     my $select_sql = 'SELECT last_run_time, is_prioritized FROM TestSet WHERE name = ?';
@@ -76,13 +82,15 @@ sub _get_db_data {
         $self->{dbh}->selectrow_array( $select_sql, {}, $self->name() );
 }
 
-sub test_files {
+sub test_files
+{
     my $self = shift;
 
     return sort File::Find::Rule->file()->name( '*.t' )->in( $self->test_dir() );
 }
 
-sub last_mod_time {
+sub last_mod_time
+{
     my $self = shift;
 
     return $self->{last_mod_time} if exists $self->{last_mod_time};
@@ -92,25 +100,29 @@ sub last_mod_time {
     return $self->{last_mod_time};
 }
 
-sub _last_mod_time {
+sub _last_mod_time
+{
     my $self = shift;
 
     return max map { ( stat $_ )[9] } $self->test_files();
 }
 
-sub is_out_of_date {
+sub is_out_of_date
+{
     my $self = shift;
 
     return $self->seconds_out_of_date() > 0 ? 1 : 0;
 }
 
-sub seconds_out_of_date {
+sub seconds_out_of_date
+{
     my $self = shift;
 
     return $self->last_mod_time() - $self->last_run_time();
 }
 
-sub update_last_run_time {
+sub update_last_run_time
+{
     my $self = shift;
     my $time = shift;
 
@@ -121,7 +133,8 @@ sub update_last_run_time {
     $self->_get_db_data();
 }
 
-sub prioritize {
+sub prioritize
+{
     my $self = shift;
 
     my $update_sql = 'UPDATE TestSet SET is_prioritized = ? WHERE name = ?';
@@ -131,7 +144,8 @@ sub prioritize {
     $self->_get_db_data();
 }
 
-sub unprioritize {
+sub unprioritize
+{
     my $self = shift;
 
     my $update_sql = 'UPDATE TestSet SET is_prioritized = ? WHERE name = ?';
@@ -141,11 +155,13 @@ sub unprioritize {
     $self->_get_db_data();
 }
 
-sub update_files {
+sub update_files
+{
     return;
 }
 
-sub remove {
+sub remove
+{
     my $self = shift;
 
     my $delete_sql = 'DELETE FROM TestSet WHERE name = ?';
@@ -156,7 +172,8 @@ sub remove {
         or die "Cannot rmtree " . $self->set_dir() . "\n";
 }
 
-sub All {
+sub All
+{
     my $class = shift;
 
     my $root_dir = SmokeRunner::Multi::Config->instance()->root_dir();
@@ -173,7 +190,8 @@ sub All {
         );
 }
 
-sub _sort_sets {
+sub _sort_sets
+{
     return
         ( $b->is_prioritized() <=> $a->is_prioritized()
           or

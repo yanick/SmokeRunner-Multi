@@ -11,7 +11,8 @@ use File::Which;
 use SmokeRunner::Multi::SafeRun qw( safe_run );
 
 
-sub _new {
+sub _new
+{
     my $class = shift;
     my %p     = @_;
 
@@ -20,7 +21,8 @@ sub _new {
     return bless \%p, $class;
 }
 
-sub _last_mod_time {
+sub _last_mod_time
+{
     my $self = shift;
 
     my $uri = $self->_svn_uri();
@@ -32,15 +34,17 @@ sub _last_mod_time {
 
     my ( $date, $time, $tz ) = ( $1, $2, $3 );
 
-    my $parser = DateTime::Format::Strptime->new(
-        pattern   => '%F %T',
-        time_zone => $tz,
-    );
+    my $parser = 
+        DateTime::Format::Strptime->new
+            ( pattern   => '%F %T',
+              time_zone => $tz,
+            );
 
     return $parser->parse_datetime("$date $time")->epoch;
 }
 
-sub _svn_uri {
+sub _svn_uri
+{
     my $self = shift;
 
     return $self->{svn_uri} if $self->{svn_uri};
@@ -53,23 +57,24 @@ sub _svn_uri {
     return $self->{svn_uri} = $1;
 }
 
-sub update_files {
+sub update_files
+{
     my $self = shift;
 
     $self->_run_svn(  'up', $self->set_dir() );
 }
 
-sub _run_svn {
+sub _run_svn
+{
     my $self = shift;
 
     my $stdout;
     my $stderr;
-    safe_run(
-        command       => 'svn',
-        args          => [@_],
-        stdout_buffer => \$stdout,
-        stderr_buffer => \$stderr,
-    );
+    safe_run( command       => 'svn',
+              args          => [@_],
+              stdout_buffer => \$stdout,
+              stderr_buffer => \$stderr,
+            );
 
     die "Error running svn:\n$stderr\n"
         if $stderr;

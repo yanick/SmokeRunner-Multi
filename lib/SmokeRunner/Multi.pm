@@ -3,23 +3,26 @@ package SmokeRunner::Multi;
 use strict;
 use warnings;
 
-our $VERSION = '0.14';
+our $VERSION = '0.15';
 
 use SmokeRunner::Multi::Config;
 use SmokeRunner::Multi::TestSet;
 
 
-sub new {
+sub new
+{
     my $class = shift;
 
     return bless {}, $class;
 }
 
-sub next_set {
+sub next_set
+{
     return ( SmokeRunner::Multi::TestSet->All() )[0];
 }
 
-sub run_and_report_next_set {
+sub run_and_report_next_set
+{
     my $self = shift;
 
     my $set = $self->next_set()
@@ -46,21 +49,30 @@ sub run_and_report_next_set {
     return $reporter;
 }
 
-sub make_runner {
+sub make_runner
+{
     my $self = shift;
 
-    return $self->_class_for( 'Runner',
-        SmokeRunner::Multi::Config->instance()->runner() )->new(@_);
+    return
+        $self->_class_for
+            ( 'Runner',
+              SmokeRunner::Multi::Config->instance()->runner() )
+                ->new(@_);
 }
 
-sub make_reporter {
+sub make_reporter
+{
     my $self = shift;
 
-    return $self->_class_for( 'Reporter',
-        SmokeRunner::Multi::Config->instance()->reporter() )->new(@_);
+    return
+        $self->_class_for
+            ( 'Reporter',
+              SmokeRunner::Multi::Config->instance()->reporter() )
+                ->new(@_);
 }
 
-sub _class_for {
+sub _class_for
+{
     my $self = shift;
     my $type = shift;
     my $name = shift;

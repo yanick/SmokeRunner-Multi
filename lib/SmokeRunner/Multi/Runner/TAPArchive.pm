@@ -15,34 +15,37 @@ use SmokeRunner::Multi::SafeRun qw( safe_run );
 use SmokeRunner::Multi::Validate qw( validate ARRAYREF_TYPE );
 use YAML::Syck qw( Dump );
 
-sub new {
+
+sub new
+{
     my $class = shift;
 
     return $class->SUPER::new(@_);
 }
 
-sub run_tests {
+sub run_tests
+{
     my $self = shift;
 
     my $temp_dir = tempdir( CLEANUP => 1 );
     my $archive  = Archive::Tar->new();
 
     my @files     = $self->set()->test_files();
-    my %meta_info = (
-        file_order => \@files,
-        start_time => time,
-    );
+    my %meta_info =
+        ( file_order => \@files,
+          start_time => time,
+        );
 
     {
         local $CWD = $self->set()->set_dir();
         foreach my $file (@files) {
             my $output;
-            safe_run(
-                command       => $self->_perl_bin(),
-                args          => [ $self->_libs(), $file ],
-                stdout_buffer => \$output,
-                stderr_buffer => \$output,
-            );
+            safe_run
+                ( command       => $self->_perl_bin(),
+                  args          => [ $self->_libs(), $file ],
+                  stdout_buffer => \$output,
+                  stderr_buffer => \$output,
+                );
 
             my $basename = basename( $file, '.t' );
             my $destination
@@ -72,7 +75,8 @@ sub run_tests {
 }
 
 # adapted from Test::Harness::Straps
-sub _perl_bin {
+sub _perl_bin
+{
     return $ENV{HARNESS_PERL}
         if defined $ENV{HARNESS_PERL};
 
@@ -82,10 +86,8 @@ sub _perl_bin {
     return $^X;
 }
 
-sub _libs {
-    my $self = shift;
-    my $dir  = $self->set()->set_dir();
-
+sub _libs
+{
     return '-Mblib', '-Mlib=lib';
 }
 
