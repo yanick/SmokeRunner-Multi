@@ -55,11 +55,11 @@ REPORT:
 
         my $output = Test::Output::stdout_from( sub { $reporter->report() } );
 
-        like( $runner->output(), qr/\Q01-a\E(?:\.t \.\.|\.\.\.\.)/,
+        like( $runner->output(), qr/01-a/,
               'reporter printed 01-a.t' );
-        like( $runner->output(), qr/\Q02-b\E(?:\.t \.\.|\.\.\.\.)/,
+        like( $runner->output(), qr/02-b/,
               'reporter printed 02-b.t' );
-        like( $runner->output(), qr{\QTest Summary Report},
+        like( $runner->output(), qr{Test Summary Report|Failed 1/2},
               'reporter printed summary output' );
     }
 }
