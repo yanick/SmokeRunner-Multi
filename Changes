@@ -1,3 +1,8 @@
+
+{{$NEXT}}
+- Fix smokerrunner-multi test so that it uses the right perl. [RT79665]
+
+
 0.16    2008-05-09
 
 - Even more test fixes to try to work with various versions of prove.
