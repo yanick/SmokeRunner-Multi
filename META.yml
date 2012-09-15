@@ -1,12 +1,58 @@
 ---
-name: SmokeRunner-Multi
-version: 0.16
+abstract: 'Manage smoke tests across multiple branches/checkouts/projects'
 author:
   - 'Dave Rolsky, <autarch@urth.org>'
-abstract: Manage smoke tests across multiple branches/checkouts/projects
+build_requires:
+  Test::More: 0
+configure_requires:
+  Module::Build: 0.4
+dynamic_config: 1
+generated_by: 'Module::Build version 0.4, CPAN::Meta::Converter version 2.120630'
 license: perl
-resources:
-  license: http://dev.perl.org/licenses/
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: SmokeRunner-Multi
+provides:
+  SmokeRunner::Multi:
+    file: lib/SmokeRunner/Multi.pm
+    version: 0.17
+  SmokeRunner::Multi::Config:
+    file: lib/SmokeRunner/Multi/Config.pm
+    version: 0
+  SmokeRunner::Multi::DBI:
+    file: lib/SmokeRunner/Multi/DBI.pm
+    version: 0
+  SmokeRunner::Multi::Reporter:
+    file: lib/SmokeRunner/Multi/Reporter.pm
+    version: 0
+  SmokeRunner::Multi::Reporter::Screen:
+    file: lib/SmokeRunner/Multi/Reporter/Screen.pm
+    version: 0
+  SmokeRunner::Multi::Reporter::Smolder:
+    file: lib/SmokeRunner/Multi/Reporter/Smolder.pm
+    version: 0
+  SmokeRunner::Multi::Runner:
+    file: lib/SmokeRunner/Multi/Runner.pm
+    version: 0
+  SmokeRunner::Multi::Runner::Prove:
+    file: lib/SmokeRunner/Multi/Runner/Prove.pm
+    version: 0
+  SmokeRunner::Multi::Runner::TAPArchive:
+    file: lib/SmokeRunner/Multi/Runner/TAPArchive.pm
+    version: 0
+  SmokeRunner::Multi::SafeRun:
+    file: lib/SmokeRunner/Multi/SafeRun.pm
+    version: 0
+  SmokeRunner::Multi::TestSet:
+    file: lib/SmokeRunner/Multi/TestSet.pm
+    version: 0
+  SmokeRunner::Multi::TestSet::SVN:
+    file: lib/SmokeRunner/Multi/TestSet/SVN.pm
+    version: 0
+  SmokeRunner::Multi::Validate:
+    file: lib/SmokeRunner/Multi/Validate.pm
+    version: 0
 requires:
   Archive::Tar: 0
   Class::Accessor: 0
@@ -29,37 +75,6 @@ requires:
   Test::Harness: 3
   YAML::Syck: 0
   perl: 5.008
-build_requires:
-  Test::More: 0
-provides:
-  SmokeRunner::Multi:
-    file: lib/SmokeRunner/Multi.pm
-    version: 0.16
-  SmokeRunner::Multi::Config:
-    file: lib/SmokeRunner/Multi/Config.pm
-  SmokeRunner::Multi::DBI:
-    file: lib/SmokeRunner/Multi/DBI.pm
-  SmokeRunner::Multi::Reporter:
-    file: lib/SmokeRunner/Multi/Reporter.pm
-  SmokeRunner::Multi::Reporter::Screen:
-    file: lib/SmokeRunner/Multi/Reporter/Screen.pm
-  SmokeRunner::Multi::Reporter::Smolder:
-    file: lib/SmokeRunner/Multi/Reporter/Smolder.pm
-  SmokeRunner::Multi::Runner:
-    file: lib/SmokeRunner/Multi/Runner.pm
-  SmokeRunner::Multi::Runner::Prove:
-    file: lib/SmokeRunner/Multi/Runner/Prove.pm
-  SmokeRunner::Multi::Runner::TAPArchive:
-    file: lib/SmokeRunner/Multi/Runner/TAPArchive.pm
-  SmokeRunner::Multi::SafeRun:
-    file: lib/SmokeRunner/Multi/SafeRun.pm
-  SmokeRunner::Multi::TestSet:
-    file: lib/SmokeRunner/Multi/TestSet.pm
-  SmokeRunner::Multi::TestSet::SVN:
-    file: lib/SmokeRunner/Multi/TestSet/SVN.pm
-  SmokeRunner::Multi::Validate:
-    file: lib/SmokeRunner/Multi/Validate.pm
-generated_by: Module::Build version 0.32
-meta-spec:
-  url: http://module-build.sourceforge.net/META-spec-v1.2.html
-  version: 1.2
+resources:
+  license: http://dev.perl.org/licenses/
+version: 0.17

@@ -23,15 +23,12 @@ METHODS/FUNCTIONS
     This class provides the following methods:
 
   SmokeRunner::Multi->new()
-
     Creates a new object.
 
   $smoker->next_set()
-
     Returns the next test set to be run.
 
   $smoker->run_and_report_next_set()
-
     This is a convenience method that can be used to run and report on the
     next test set in a single step.
 
@@ -39,13 +36,11 @@ METHODS/FUNCTIONS
     creates internally.
 
   $smoker->make_runner( ... )
-
     This is a convenience method for making a `SmokeRunner::Multi::Runner'
     object of the class specified in the config file. Any parameters passed
     to this method will be passed on to the Runner class's constructor.
 
   $smoker->make_reporter( ... )
-
     This is a convenience method for making a
     `SmokeReporter::Multi::Reporter' object of the class specified in the
     config file. Any parameters passed to this method will be passed on to

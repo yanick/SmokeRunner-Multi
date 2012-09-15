@@ -39,3 +39,4 @@ t/smokerunner-multi.t
 t/TestSet.t
 t/TestSet/SVN.t
 SIGNATURE    Added here by Module::Build
+META.json
