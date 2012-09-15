@@ -8,7 +8,6 @@ use base 'Class::Singleton';
 use File::Spec;
 use YAML::Syck qw( LoadFile );
 
-
 sub _new_instance
 {
     my $class = shift;
@@ -27,17 +26,11 @@ sub _FindConfigFile
 {
     my $class = shift;
 
-
-    my @files;
-
-    push @files, $ENV{SMOKERUNNER_CONFIG}
-        if $ENV{SMOKERUNNER_CONFIG};
-
-    my $home_dir = (getpwuid( $> ) )[7];
-    push @files,File::Spec->catfile( $home_dir ,'.smokerunner', 'smokerunner.conf' )
-        if $home_dir && -d $home_dir;
-
-    push @files, '/etc/smokerunner/smokerunner.conf';
+    my @files = ( 
+        $class->_config_from_env,
+        $class->_config_from_home,
+        $class->_config_from_system,
+    );
 
     for my $file (@files)
     {
@@ -46,6 +39,22 @@ sub _FindConfigFile
 
     die "Cannot find a config file for the smoke-runner. Looked in [@files].\n";
 }
+
+sub _config_from_env {
+    return $ENV{SMOKERUNNER_CONFIG} if $ENV{SMOKERUNNER_CONFIG};
+
+    return;
+}
+
+sub _config_from_home {
+    my $home_dir = (getpwuid( $> ) )[7];
+    return File::Spec->catfile( $home_dir ,'.smokerunner', 'smokerunner.conf' )
+        if $home_dir && -d $home_dir;
+
+    return;
+}
+
+sub _config_from_system { return '/etc/smokerunner/smokerunner.conf' }
 
 sub root_dir { return $_[0]->{root} }
 sub runner   { return $_[0]->{runner} }

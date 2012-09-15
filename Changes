@@ -1,6 +1,9 @@
 
 {{$NEXT}}
+
 - Fix smokerrunner-multi test so that it uses the right perl. [RT79665]
+
+- Fix Config.t in the case the user already has SR::M installed [RT65954] 
 
 
 0.16    2008-05-09
