@@ -1,4 +1,5 @@
 package SmokeRunner::Multi::Runner;
+#ABSTRACT: Base class for running test sets
 
 use strict;
 use warnings;
@@ -31,9 +32,6 @@ sub run_tests
 
 __END__
 
-=head1 NAME
-
-SmokeRunner::Multi::Runner - Base class for running test sets
 
 =head1 SYNOPSIS
 

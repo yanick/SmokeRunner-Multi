@@ -1,4 +1,5 @@
 package SmokeRunner::Multi::Reporter::Smolder;
+#ABSTRACT:  Reports test runs to a Smolder installation
 
 use strict;
 use warnings;
@@ -69,9 +70,6 @@ sub report
 
 __END__
 
-=head1 NAME
-
-SmokeRunner::Multi::Reporter::Smolder - Reports test runs to a Smolder installation
 
 =head1 SYNOPSIS
 

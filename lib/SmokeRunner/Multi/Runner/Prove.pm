@@ -1,4 +1,5 @@
 package SmokeRunner::Multi::Runner::Prove;
+#ABSTRACT: Runner subclass which uses prove
 
 use strict;
 use warnings;
@@ -30,10 +31,6 @@ sub run_tests
 1;
 
 __END__
-
-=head1 NAME
-
-SmokeRunner::Multi::Runner::Prove - Runner subclass which uses prove
 
 =head1 SYNOPSIS
 

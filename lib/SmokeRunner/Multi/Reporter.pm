@@ -1,4 +1,5 @@
 package SmokeRunner::Multi::Reporter;
+#ABSTRACT: Base class for reporting on smoke tests
 
 use strict;
 use warnings;
@@ -30,9 +31,6 @@ sub report {
 
 __END__
 
-=head1 NAME
-
-SmokeRunner::Multi::Reporter - Base class for reporting on smoke tests
 
 =head1 SYNOPSIS
 

@@ -1,4 +1,5 @@
 package SmokeRunner::Multi::Config;
+#ABSTRACT: Config information for a Smokerunner::Multi setup
 
 use strict;
 use warnings;
@@ -66,9 +67,6 @@ sub smolder  { return $_[0]->{smolder} || {} }
 
 __END__
 
-=head1 NAME
-
-SmokeRunner::Multi::Config - Config information for a Smokerunner::Multi setup
 
 =head1 SYNOPSIS
 

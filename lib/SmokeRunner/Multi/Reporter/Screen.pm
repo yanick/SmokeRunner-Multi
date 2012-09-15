@@ -1,4 +1,5 @@
 package SmokeRunner::Multi::Reporter::Screen;
+#ABSTRACT: Prints runner output to STDOUT
 
 use strict;
 use warnings;
@@ -21,10 +22,6 @@ sub report
 1;
 
 __END__
-
-=head1 NAME
-
-SmokeRunner::Multi::Reporter::Screen - Prints runner output to STDOUT
 
 =head1 SYNOPSIS
 
