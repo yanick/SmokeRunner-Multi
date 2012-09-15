@@ -1,4 +1,5 @@
 package SmokeRunner::Multi::TestSet;
+#ABSTRACT: Represents a set of tests
 
 use strict;
 use warnings;
@@ -208,9 +209,6 @@ sub _sort_sets
 
 __END__
 
-=head1 NAME
-
-SmokeRunner::Multi::TestSet - Represents a set of tests
 
 =head1 SYNOPSIS
 

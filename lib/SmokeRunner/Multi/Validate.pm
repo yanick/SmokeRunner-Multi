@@ -1,4 +1,5 @@
 package SmokeRunner::Multi::Validate;
+#ABSTRACT: Wrapper around Params::Validate for SmokeRunner::Multi
 
 use strict;
 use warnings;
@@ -79,9 +80,6 @@ EOF
 
 __END__
 
-=head1 NAME
-
-SmokeRunner::Multi::Validate - Wrapper around Params::Validate for SmokeRunner::Multi
 
 =head1 SYNOPSIS
 

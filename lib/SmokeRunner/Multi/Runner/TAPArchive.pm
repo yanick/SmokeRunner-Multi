@@ -1,4 +1,5 @@
 package SmokeRunner::Multi::Runner::TAPArchive;
+#ABSTRACT: Runner subclass which creates a TAP archive file
 
 use strict;
 use warnings;
@@ -96,9 +97,6 @@ sub _libs
 
 __END__
 
-=head1 NAME
-
-SmokeRunner::Multi::Runner::TAPArchive - Runner subclass which creates a TAP archive file
 
 =head1 SYNOPSIS
 

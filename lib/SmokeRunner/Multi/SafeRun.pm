@@ -1,4 +1,5 @@
 package SmokeRunner::Multi::SafeRun;
+#ABSTRACT: Run an external command safely in taint mode
 
 use strict;
 use warnings;
@@ -56,9 +57,6 @@ use IPC::Run3 qw( run3 );
 
 __END__
 
-=head1 NAME
-
-SmokeRunner::Multi::SafeRun - Run an external command safely in taint mode
 
 =head1 SYNOPSIS
 

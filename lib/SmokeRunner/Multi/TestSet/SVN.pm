@@ -1,4 +1,5 @@
 package SmokeRunner::Multi::TestSet::SVN;
+#ABSTRACT: Represents a set of test based on an SVN checkout
 
 use strict;
 use warnings;
@@ -87,9 +88,6 @@ sub _run_svn
 
 __END__
 
-=head1 NAME
-
-SmokeRunner::Multi::TestSet::SVN - Represents a set of test based on an SVN checkout
 
 =head1 SYNOPSIS
 
