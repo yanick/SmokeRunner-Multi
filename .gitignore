@@ -5,3 +5,4 @@ _bui
 _build
 blib
 SmokeRunner-Multi-*
+.build
