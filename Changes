@@ -2,6 +2,8 @@ Revision history for {{$dist->name}}
 
 {{$NEXT}}
 
+0.18      2012-09-16
+
 - Use File::HomeDir for maximal cross-platformability.
 
 0.17    2012-09-15
