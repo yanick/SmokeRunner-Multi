@@ -7,6 +7,7 @@ use warnings;
 use base 'Class::Singleton';
 
 use File::Spec;
+use File::HomeDir;
 use YAML::Syck qw( LoadFile );
 
 sub _new_instance
@@ -48,11 +49,8 @@ sub _config_from_env {
 }
 
 sub _config_from_home {
-    my $home_dir = (getpwuid( $> ) )[7];
-    return File::Spec->catfile( $home_dir ,'.smokerunner', 'smokerunner.conf' )
-        if $home_dir && -d $home_dir;
-
-    return;
+    return File::Spec->catfile( File::HomeDir->my_home , '.smokerunner',
+        'smokerunner.conf' );
 }
 
 sub _config_from_system { return '/etc/smokerunner/smokerunner.conf' }
