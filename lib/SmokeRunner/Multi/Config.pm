@@ -1,4 +1,11 @@
 package SmokeRunner::Multi::Config;
+BEGIN {
+  $SmokeRunner::Multi::Config::AUTHORITY = 'cpan:YANICK';
+}
+{
+  $SmokeRunner::Multi::Config::VERSION = '0.18';
+}
+#ABSTRACT: Config information for a Smokerunner::Multi setup
 
 use strict;
 use warnings;
@@ -6,6 +13,7 @@ use warnings;
 use base 'Class::Singleton';
 
 use File::Spec;
+use File::HomeDir;
 use YAML::Syck qw( LoadFile );
 
 sub _new_instance
@@ -47,11 +55,8 @@ sub _config_from_env {
 }
 
 sub _config_from_home {
-    my $home_dir = (getpwuid( $> ) )[7];
-    return File::Spec->catfile( $home_dir ,'.smokerunner', 'smokerunner.conf' )
-        if $home_dir && -d $home_dir;
-
-    return;
+    return File::Spec->catfile( File::HomeDir->my_home , '.smokerunner',
+        'smokerunner.conf' );
 }
 
 sub _config_from_system { return '/etc/smokerunner/smokerunner.conf' }
@@ -64,11 +69,17 @@ sub smolder  { return $_[0]->{smolder} || {} }
 
 1;
 
-__END__
+
+
+=pod
 
 =head1 NAME
 
 SmokeRunner::Multi::Config - Config information for a Smokerunner::Multi setup
+
+=head1 VERSION
+
+version 0.18
 
 =head1 SYNOPSIS
 
@@ -180,4 +191,30 @@ under the same terms as Perl itself.
 The full text of the license can be found in the LICENSE file included
 with this module.
 
+=head1 AUTHORS
+
+=over 4
+
+=item *
+
+Dave Rolsky, <autarch@urth.org>
+
+=item *
+
+Yanick Champoux <yanick@cpan.org>
+
+=back
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2007 by LiveText, Inc..
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
 =cut
+
+
+__END__
+
+

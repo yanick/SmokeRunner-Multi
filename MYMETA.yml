@@ -2,18 +2,12 @@
 abstract: 'Manage smoke tests across multiple branches/checkouts/projects'
 author:
   - 'Dave Rolsky, <autarch@urth.org>'
-  - 'Yanick Champoux <yanick@cpan.org>'
 build_requires:
-  Carp: 0
-  File::Copy: 0
-  File::Find: 0
-  Module::Build: 0.3601
-  Test::More: 0.94
-  perl: 5.004
+  Test::More: 0
 configure_requires:
-  Module::Build: 0.3601
+  Module::Build: 0.4
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.300010, CPAN::Meta::Converter version 2.120630'
+generated_by: 'Module::Build version 0.4, CPAN::Meta::Converter version 2.120630'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -22,56 +16,54 @@ name: SmokeRunner-Multi
 provides:
   SmokeRunner::Multi:
     file: lib/SmokeRunner/Multi.pm
-    version: 0.18
+    version: 0.17
   SmokeRunner::Multi::Config:
     file: lib/SmokeRunner/Multi/Config.pm
-    version: 0.18
+    version: 0
   SmokeRunner::Multi::DBI:
     file: lib/SmokeRunner/Multi/DBI.pm
-    version: 0.18
+    version: 0
   SmokeRunner::Multi::Reporter:
     file: lib/SmokeRunner/Multi/Reporter.pm
-    version: 0.18
+    version: 0
   SmokeRunner::Multi::Reporter::Screen:
     file: lib/SmokeRunner/Multi/Reporter/Screen.pm
-    version: 0.18
+    version: 0
   SmokeRunner::Multi::Reporter::Smolder:
     file: lib/SmokeRunner/Multi/Reporter/Smolder.pm
-    version: 0.18
+    version: 0
   SmokeRunner::Multi::Runner:
     file: lib/SmokeRunner/Multi/Runner.pm
-    version: 0.18
+    version: 0
   SmokeRunner::Multi::Runner::Prove:
     file: lib/SmokeRunner/Multi/Runner/Prove.pm
-    version: 0.18
+    version: 0
   SmokeRunner::Multi::Runner::TAPArchive:
     file: lib/SmokeRunner/Multi/Runner/TAPArchive.pm
-    version: 0.18
+    version: 0
   SmokeRunner::Multi::SafeRun:
     file: lib/SmokeRunner/Multi/SafeRun.pm
-    version: 0.18
+    version: 0
   SmokeRunner::Multi::TestSet:
     file: lib/SmokeRunner/Multi/TestSet.pm
-    version: 0.18
+    version: 0
   SmokeRunner::Multi::TestSet::SVN:
     file: lib/SmokeRunner/Multi/TestSet/SVN.pm
-    version: 0.18
+    version: 0
   SmokeRunner::Multi::Validate:
     file: lib/SmokeRunner/Multi/Validate.pm
-    version: 0.18
+    version: 0
 requires:
   Archive::Tar: 0
-  Class::Accessor::Fast: 0
+  Class::Accessor: 0
   Class::Factory::Util: 0
   Class::Singleton: 0
   Cwd: 0
   DBD::SQLite: 0
   DBI: 0
   DateTime::Format::Strptime: 0
-  Exporter: 0
   File::Basename: 0
   File::Find::Rule: 0
-  File::HomeDir: 0
   File::Path: 0
   File::Spec: 0
   File::Temp: 0
@@ -80,14 +72,9 @@ requires:
   IPC::Run3: 0
   List::Util: 0
   Params::Validate: 0
-  Scalar::Util: 0
+  Test::Harness: 3
   YAML::Syck: 0
-  base: 0
-  strict: 0
-  warnings: 0
+  perl: 5.008
 resources:
-  bugtracker: http://rt.cpan.org/Public/Dist/Display.html?Name=SmokeRunner-Multi
-  homepage: http://search.cpan.org/dist/SmokeRunner-Multi/
-  repository: https://github.com/yanick/SmokeRunner-Multi.git
-version: 0.18
-x_authority: cpan:YANICK
+  license: http://dev.perl.org/licenses/
+version: 0.17

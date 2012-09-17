@@ -1,4 +1,11 @@
 package SmokeRunner::Multi::Runner::Prove;
+BEGIN {
+  $SmokeRunner::Multi::Runner::Prove::AUTHORITY = 'cpan:YANICK';
+}
+{
+  $SmokeRunner::Multi::Runner::Prove::VERSION = '0.18';
+}
+#ABSTRACT: Runner subclass which uses prove
 
 use strict;
 use warnings;
@@ -29,11 +36,17 @@ sub run_tests
 
 1;
 
-__END__
+
+
+=pod
 
 =head1 NAME
 
 SmokeRunner::Multi::Runner::Prove - Runner subclass which uses prove
+
+=head1 VERSION
+
+version 0.18
 
 =head1 SYNOPSIS
 
@@ -94,4 +107,29 @@ it under the same terms as Perl itself.
 The full text of the license can be found in the LICENSE file included
 with this module.
 
+=head1 AUTHORS
+
+=over 4
+
+=item *
+
+Dave Rolsky, <autarch@urth.org>
+
+=item *
+
+Yanick Champoux <yanick@cpan.org>
+
+=back
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2007 by LiveText, Inc..
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
 =cut
+
+
+__END__
+
