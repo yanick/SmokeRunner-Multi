@@ -27,8 +27,6 @@ sub run_and_report_next_set
     my $set = $self->next_set()
         or return;
 
-    my $config = SmokeRunner::Multi::Config->instance();
-
     my $runner = $self->make_runner( set => $set );
 
     $set->update_files();
