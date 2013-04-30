@@ -12,6 +12,9 @@ Makefile.PL
 README
 README.mkdn
 SIGNATURE
+inc/Devel/AssertOS.pm
+inc/Devel/AssertOS/MSWin32.pm
+inc/Devel/CheckOS.pm
 lib/SmokeRunner/Multi.pm
 lib/SmokeRunner/Multi/Config.pm
 lib/SmokeRunner/Multi/DBI.pm
@@ -27,7 +30,7 @@ lib/SmokeRunner/Multi/TestSet/SVN.pm
 lib/SmokeRunner/Multi/Validate.pm
 script/smokerunner-multi
 t/00-compile.t
-t/000-report-versions.t
+t/000-report-versions-tiny.t
 t/Config.t
 t/DBI.t
 t/Multi.t
