@@ -1,4 +1,10 @@
 package SmokeRunner::Multi;
+BEGIN {
+  $SmokeRunner::Multi::AUTHORITY = 'cpan:YANICK';
+}
+{
+  $SmokeRunner::Multi::VERSION = '0.19';
+}
 #ABSTRACT: Manage smoke tests across multiple branches/checkouts/projects
 
 use strict;
@@ -92,6 +98,15 @@ sub _class_for
 
 __END__
 
+=pod
+
+=head1 NAME
+
+SmokeRunner::Multi - Manage smoke tests across multiple branches/checkouts/projects
+
+=head1 VERSION
+
+version 0.19
 
 =head1 SYNOPSIS
 
@@ -158,3 +173,26 @@ anything.
 See the other classes in this distribution for more information:
 L<SmokeRunner::Multi::TestSet>, L<SmokeRunner::Multi::Runner>,
 L<SmokeRunner::Multi::Reporter>, and L<SmokeRunner::Multi::Config>.
+
+=head1 AUTHORS
+
+=over 4
+
+=item *
+
+Dave Rolsky <autarch@urth.org>
+
+=item *
+
+Yanick Champoux <yanick@cpan.org>
+
+=back
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2007 by LiveText, Inc..
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+=cut

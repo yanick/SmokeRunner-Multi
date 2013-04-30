@@ -1,18 +1,11 @@
-Revision history for {{$dist->name}}
+Revision history for SmokeRunner-Multi
 
-{{$NEXT}}
- [API CHANGES]
-
- [BUG FIXES]
-
- [DOCUMENTATION]
-
+0.19 2013-04-29
  [ENHANCEMENTS]
  - Don't install on MSWin32 machines.
 
- [NEW FEATURES]
-
  [STATISTICS]
+ - code churn: 4 files changed, 52 insertions(+), 51 deletions(-)
 
 0.18 2012-09-16
  - Use File::HomeDir for maximal cross-platformability.

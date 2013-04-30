@@ -1,0 +1,74 @@
+This file contains message digests of all files listed in MANIFEST,
+signed via the Module::Signature module, version 0.68.
+
+To verify the content in this distribution, first make sure you have
+Module::Signature installed, then type:
+
+    % cpansign -v
+
+It will check each file's integrity, as well as the signature's
+validity.  If "==> Signature verified OK! <==" is not displayed,
+the distribution may already have been compromised, and you should
+not run its Makefile.PL or Build.PL.
+
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA1
+
+SHA1 147efd9b5330adf75b100535fde9cde75994aa01 Build.PL
+SHA1 b8eaad539f20999c13ed9bd848ec9d81b3266e90 Changes
+SHA1 2dd89d23ae806e44b2546546e1b38f84c9c3a8bd INSTALL
+SHA1 f6ea34259ea06a3ea550bee5ce038437c4db6454 LICENSE
+SHA1 3f8eb1eadaf23cf40eb2ae0aaeaa5733c878b63f MANIFEST
+SHA1 fd9411d66c9441fbbceee066acf81538569af294 MANIFEST.SKIP
+SHA1 68bc2adc402cdfdc615ce0b82bd933ba839f1f1f META.json
+SHA1 56c91ad5d147ab505f49f1b2402985c1cfd114ff META.yml
+SHA1 df0478d8986767f85aa931db6970b6f2be0ea073 MYMETA.json
+SHA1 64165d363758cc586698d6554366e1ec4c1bed7e MYMETA.yml
+SHA1 359aeb3e67dfa11ca3b6ee860631615a246a220f Makefile.PL
+SHA1 d18064f30abb52861a2a0514cfa9782c83c5ddbc README
+SHA1 f05b9e9ae23f3dc59f9a114158f35079168f76ea README.mkdn
+SHA1 834f1086bc640d6e63cae621cf81570b8aa39c2b inc/Devel/AssertOS.pm
+SHA1 a0f8f975b3126e6e8054884a20ba40fd4f2dc585 inc/Devel/AssertOS/MSWin32.pm
+SHA1 3d38e8c3e58b463e625ae51e50fd0c7da07c3ffa inc/Devel/CheckOS.pm
+SHA1 90a0cd002cd0b7752b1d41c29bc744f2575e578f lib/SmokeRunner/Multi.pm
+SHA1 093366f659130dd8179abadb1572b59554d36109 lib/SmokeRunner/Multi/Config.pm
+SHA1 ce04229853d0914267ae16724748824f59b337c8 lib/SmokeRunner/Multi/DBI.pm
+SHA1 ab1f3a618aae5d6a5a8e2d8928186de57ec47b85 lib/SmokeRunner/Multi/Reporter.pm
+SHA1 4d3fbd77068f78d46bb9755be103dfb4233eaef5 lib/SmokeRunner/Multi/Reporter/Screen.pm
+SHA1 ce02ed65ece1d397e20c80afa9f25e9a1db6cc2b lib/SmokeRunner/Multi/Reporter/Smolder.pm
+SHA1 d1785b88724405b4e74c1fa029d5e23978172e72 lib/SmokeRunner/Multi/Runner.pm
+SHA1 2d13cf02101fa26f137f93f4e2fbef38e87cb084 lib/SmokeRunner/Multi/Runner/Prove.pm
+SHA1 4b628f98239e726d476eabd24fbc586100fd1ceb lib/SmokeRunner/Multi/Runner/TAPArchive.pm
+SHA1 2d53bd83d5976c10ac8a9ea56be0b6cd0bb8dc0f lib/SmokeRunner/Multi/SafeRun.pm
+SHA1 7bf6248c9c3daae4859bb3fef4277a081b60e427 lib/SmokeRunner/Multi/TestSet.pm
+SHA1 00bec81d4a02269d0a13af38b910780576edb365 lib/SmokeRunner/Multi/TestSet/SVN.pm
+SHA1 d43eb1b1446fa14d2cb11438e74c950184bcd7f7 lib/SmokeRunner/Multi/Validate.pm
+SHA1 4ea18368fb11f691fe0f9828bc0d87352d044096 script/smokerunner-multi
+SHA1 3cbe905b92fbc69d59a06031d5ce6c837b352aa2 t/00-compile.t
+SHA1 e8d0183887f2812db4cbac246563978e0d196beb t/000-report-versions-tiny.t
+SHA1 84170ecdd12b088d5d0ad742b2b754500a82a424 t/Config.t
+SHA1 e97047b17430947acccbb11f21016075f02006fd t/DBI.t
+SHA1 395d8afcc9b8182bd7e01bca3c964c48d8ad0bc1 t/Multi.t
+SHA1 fdd05b65a63b4fd24c68dd55461d8248df7d61c2 t/Reporter.t
+SHA1 22f12c4ca0868d4eeeb1b42b80d9487f708687c2 t/Reporter/Screen.t
+SHA1 90c1fc20fa67f10670535a8f0f96b6cb1c670045 t/Reporter/Smolder.t
+SHA1 c49065dd9a205436078ee0331021328a847ee460 t/Runner.t
+SHA1 98adc23d78e049a88c596a6579b00f2b1e38962d t/Runner/Prove.t
+SHA1 1dcc2307a59b23dd0abeb0a95f15163d385732ab t/Runner/TAPArchive.t
+SHA1 51f5bc469862958d507484c0a4afabe5db75c557 t/TestSet.t
+SHA1 5f0e5924df4ffd650944e8b87cc0c6f93b77a255 t/TestSet/SVN.t
+SHA1 e432babe0010ae93018c7ab45901d86926aff643 t/lib/SmokeRunner/Multi/Reporter/Test.pm
+SHA1 cd17a3cef820ab12aedd899e8cb4e661abefc91e t/lib/SmokeRunner/Multi/Test.pm
+SHA1 28a931f3b0c075d8d6c4ce47d5e89c3fdb19ed0f t/pod-coverage.t
+SHA1 cec881e89926d320475f9de2b7fad02c2169f510 t/pod.t
+SHA1 372dd4094f173b547060236c2cb87873d50e7875 t/set/01-a-t
+SHA1 0da6218ad9568d5d8a850333ed80ba1f5d914a9b t/set/02-b-t
+SHA1 4f56781c9767acc357a38117d1aaf7c65dfbac98 t/smokerunner-multi.t
+SHA1 ec3f84bfd7a9ce3246e7592f4134100c6b5ce02b xt/release/unused-vars.t
+-----BEGIN PGP SIGNATURE-----
+Version: GnuPG v1.4.11 (GNU/Linux)
+
+iEYEARECAAYFAlF/D/gACgkQ34Hwf+GwC4yQwgCfVFkr641G9CRsUhPxcUAa+nQJ
+/cQAoKH+jvO5Td7W/q48PqVhzGDcPrCp
+=R0hl
+-----END PGP SIGNATURE-----
