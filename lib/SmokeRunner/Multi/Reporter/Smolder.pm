@@ -20,6 +20,7 @@ sub new
 
     my $self = $class->SUPER::new(@_);
 
+    $DB::single = 1;
     my $smolder_config = SmokeRunner::Multi::Config->instance()->smolder();
 
     for my $k (@SmolderKeys)

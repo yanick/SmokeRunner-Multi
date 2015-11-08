@@ -4,25 +4,28 @@ package SmokeRunner::Multi::Config;
 use strict;
 use warnings;
 
-use base 'Class::Singleton';
+use Moo;
+with 'MooX::Singleton';
 
 use File::Spec;
 use File::HomeDir;
 use YAML::Syck qw( LoadFile );
 
-sub _new_instance
-{
-    my $class = shift;
+has config => (
+    is => 'ro',
+    default => sub {
+        my $self = shift;
 
-    my $file = $class->_FindConfigFile();
+        my $file = $self->_FindConfigFile;
 
-    my $cfg = LoadFile($file);
+        my $cfg = LoadFile($file);
 
-    die "Config in $file for the smoke-runner was not valid.\n"
-        unless $cfg && $cfg->{root};
-
-    return bless $cfg, $class;
-}
+        die "Config in $file for the smoke-runner was not valid.\n"
+            unless $cfg && $cfg->{root};
+    
+        return $cfg;
+    },
+);
 
 sub _FindConfigFile
 {
@@ -55,11 +58,29 @@ sub _config_from_home {
 
 sub _config_from_system { return '/etc/smokerunner/smokerunner.conf' }
 
-sub root_dir { return $_[0]->{root} }
-sub runner   { return $_[0]->{runner} }
-sub reporter { return $_[0]->{reporter} }
-sub smolder  { return $_[0]->{smolder} || {} }
+has root_dir => (
+    is => 'ro',
+    lazy => 1,
+    default => sub { $_[0]->config->{root} },
+);
 
+has runner => (
+    is => 'ro',
+    lazy => 1,
+    default => sub { $_[0]->config->{runner} },
+);
+
+has smolder => (
+    is => 'ro',
+    lazy => 1,
+    default => sub { $_[0]->config->{smolder} || {} },
+);
+
+has reporter => (
+    is => 'ro',
+    lazy => 1,
+    default => sub { $_[0]->config->{reporter} },
+);
 
 1;
 

@@ -95,7 +95,7 @@ our @EXPORT
         DumpFile( $ConfigFile, { %BaseConfig, smolder => \%SmolderConfig } );
 
         # Hack!
-        undef $SmokeRunner::Multi::Config::_instance;
+        $SmokeRunner::Multi::Config::_instance = undef;
     }
 }
 
