@@ -1,8 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+    - Remove MYMETA* files. (RT#108555)
 
-0.19      2013-04-29
  [API CHANGES]
 
  [BUG FIXES]
@@ -10,11 +10,17 @@ Revision history for {{$dist->name}}
  [DOCUMENTATION]
 
  [ENHANCEMENTS]
- - Don't install on MSWin32 machines.
 
  [NEW FEATURES]
 
  [STATISTICS]
+
+0.19 2013-04-29
+ [ENHANCEMENTS]
+ - Don't install on MSWin32 machines.
+
+ [STATISTICS]
+ - code churn: 4 files changed, 52 insertions(+), 51 deletions(-)
 
 0.18 2012-09-16
  - Use File::HomeDir for maximal cross-platformability.
