@@ -120,7 +120,7 @@ ALL:
 
     @sets = SmokeRunner::Multi::TestSet->All();
     is( scalar @sets, 2, 'two sets are returned from All()' );
-    is_deeply( [ map { $_->name() } @sets ],
+    is_deeply( [ sort map { $_->name() } @sets ],
                [ 'set1', 'set2' ],
                'the two sets returned are the two sets we expect' );
 }
