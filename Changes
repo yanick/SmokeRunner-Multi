@@ -1,6 +1,8 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
+    - One test was comparing potentially unsorted data.
+
   [ API CHANGES ]
 
   [ BUG FIXES ]
