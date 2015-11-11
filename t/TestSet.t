@@ -1,7 +1,7 @@
 use strict;
 use warnings;
 
-use Test::More tests => 28;
+use Test::More tests => 6;
 
 use File::Find::Rule;
 use File::Path qw( mkpath );
@@ -19,8 +19,7 @@ my $root_dir = root_dir();
 my $set_dir  = set_dir();
 my $t_dir    = test_dir();
 
-NEW:
-{
+subtest new => sub {
     mkpath( $set_dir, 0, 0755 )
         or die "Cannot mkpath $set_dir: $!";
 
@@ -40,10 +39,9 @@ NEW:
     is( $set->test_dir(), $t_dir,
         'test_dir() method returns expected path' );
     isa_ok( $set, 'SmokeRunner::Multi::TestSet' );
-}
+};
 
-TEST_FILES:
-{
+subtest TEST_FILES => sub {
     my $set = SmokeRunner::Multi::TestSet->new( set_dir => $set_dir );
 
     my @tests = $set->test_files();
@@ -71,10 +69,9 @@ TEST_FILES:
     is( scalar @tests, 5, 'five test files found' );
     is_deeply( \@tests, \@expected_tests,
                'test files found in set are 1.t - 5.t, in sorted order' );
-}
+};
 
-ATTRIBUTES:
-{
+subtest ATTRIBUTES => sub {
     my $set = SmokeRunner::Multi::TestSet->new( set_dir => $set_dir );
 
     my $last_mod_time = max map { ( stat $_ )[9] } $set->test_files();
@@ -101,10 +98,9 @@ ATTRIBUTES:
 
     $set->unprioritize();
     ok( ! $set->is_prioritized(), 'set is not prioritized after calling unprioritize()' );
-}
+};
 
-ALL:
-{
+subtest ALL => sub {
     my $new_set_dir = File::Spec->catdir( $root_dir, 'set2' );
     mkpath( $new_set_dir, 0, 0755 )
         or die "Cannot mkpath $new_set_dir: $!";
@@ -120,13 +116,12 @@ ALL:
 
     @sets = SmokeRunner::Multi::TestSet->All();
     is( scalar @sets, 2, 'two sets are returned from All()' );
-    is_deeply( [ map { $_->name() } @sets ],
+    is_deeply( [ sort map { $_->name() } @sets ],
                [ 'set1', 'set2' ],
                'the two sets returned are the two sets we expect' );
-}
+};
 
-REMOVE:
-{
+subtest REMOVE => sub {
     my $new_set_dir = File::Spec->catdir( $root_dir, 'set2' );
     my $set = SmokeRunner::Multi::TestSet->new( set_dir => $new_set_dir );
 
@@ -138,10 +133,9 @@ REMOVE:
     my $count = $dbh->selectrow_array( 'SELECT COUNT(*) FROM TestSet WHERE name = ?', {}, 'set2' );
 
     is( $count, 0, 'set data was deleted from database' );
-}
+};
 
-ALL_SORTING:
-{
+subtest ALL_SORTING => sub {
     $_->remove() for SmokeRunner::Multi::TestSet->All();
 
     write_four_sets();
@@ -168,4 +162,4 @@ ALL_SORTING:
                [ qw( set3 set2 set1 set4 ) ],
                'prioritized sets are sorted first, and secondary sort if by out of date-ness',
              );
-}
+};
