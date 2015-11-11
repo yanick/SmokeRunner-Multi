@@ -1,8 +1,6 @@
 Revision history for {{$dist->name}}
 
 {{$NEXT}}
-    - One test was comparing potentially unsorted data.
-
   [ API CHANGES ]
 
   [ BUG FIXES ]
@@ -14,6 +12,12 @@ Revision history for {{$dist->name}}
   [ NEW FEATURES ]
 
   [ STATISTICS ]
+
+0.21 2015-11-11
+  - One test was comparing potentially unsorted data.
+
+  [ STATISTICS ]
+    - code churn: 2 files changed, 61 insertions(+), 60 deletions(-)
 
 0.20 2015-11-08
   - Remove MYMETA* files. (RT#108555)
