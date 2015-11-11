@@ -1,6 +1,7 @@
 package SmokeRunner::Multi::Reporter::Smolder;
+our $AUTHORITY = 'cpan:YANICK';
 #ABSTRACT:  Reports test runs to a Smolder installation
-
+$SmokeRunner::Multi::Reporter::Smolder::VERSION = '0.21';
 use strict;
 use warnings;
 
@@ -71,6 +72,17 @@ sub report
 
 __END__
 
+=pod
+
+=encoding UTF-8
+
+=head1 NAME
+
+SmokeRunner::Multi::Reporter::Smolder - Reports test runs to a Smolder installation
+
+=head1 VERSION
+
+version 0.21
 
 =head1 SYNOPSIS
 
@@ -147,5 +159,26 @@ under the same terms as Perl itself.
 
 The full text of the license can be found in the LICENSE file included
 with this module.
+
+=head1 AUTHORS
+
+=over 4
+
+=item *
+
+Dave Rolsky <autarch@urth.org>
+
+=item *
+
+Yanick Champoux <yanick@cpan.org>
+
+=back
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2007 by LiveText, Inc..
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
 =cut

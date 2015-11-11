@@ -1,19 +1,10 @@
-Revision history for {{$dist->name}}
+Revision history for SmokeRunner-Multi
 
-{{$NEXT}}
-    - One test was comparing potentially unsorted data.
-
-  [ API CHANGES ]
-
-  [ BUG FIXES ]
-
-  [ DOCUMENTATION ]
-
-  [ ENHANCEMENTS ]
-
-  [ NEW FEATURES ]
+0.21 2015-11-11
+  - One test was comparing potentially unsorted data.
 
   [ STATISTICS ]
+    - code churn: 2 files changed, 61 insertions(+), 60 deletions(-)
 
 0.20 2015-11-08
   - Remove MYMETA* files. (RT#108555)
